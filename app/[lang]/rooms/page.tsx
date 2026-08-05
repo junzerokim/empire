@@ -17,6 +17,7 @@ export default async function RoomsPage({ params }: PageProps<"/[lang]/rooms">) 
       currency: "€",
       size: "25m²",
       beds: "2 Single",
+      capacity: t.room1_capacity,
       gradient: "from-stone-200 to-stone-300",
     },
     {
@@ -114,6 +115,12 @@ export default async function RoomsPage({ params }: PageProps<"/[lang]/rooms">) 
                   <span>🛏️</span>
                   <span>{room.beds}</span>
                 </div>
+
+                {room.capacity && (
+                  <div className="text-right text-sm text-[#1a1a1a] mb-2">
+                    {room.capacity}
+                  </div>
+                )}
 
                 <Link
                   href={`/${lang}/contact`}
