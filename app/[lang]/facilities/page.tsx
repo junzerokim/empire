@@ -10,11 +10,11 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
 
   const facilities = [
     { icon: "🍽️", title: t.f1_title, desc: t.f1_desc, accent: true },
-    { icon: "💪", title: t.f2_title, desc: t.f2_desc, accent: false },
-    { icon: "🧖", title: t.f3_title, desc: t.f3_desc, accent: false },
-    { icon: "🎤", title: t.f4_title, desc: t.f4_desc, accent: true },
-    { icon: "🚗", title: t.f5_title, desc: t.f5_desc, accent: false },
-    { icon: "🛎️", title: t.f6_title, desc: t.f6_desc, accent: true },
+    { icon: "💪🏻", title: t.f2_title, desc: t.f2_desc, note: t.f2_note, accent: false },
+    { icon: "🚙", title: t.f3_title, desc: t.f3_desc, note: t.f3_note, accent: true },
+    { icon: "🎤", title: t.f4_title, desc: t.f4_desc, accent: false },
+    { icon: "🅿️", title: t.f5_title, desc: t.f5_desc, accent: true },
+    { icon: "🧺", title: t.f6_title, desc: t.f6_desc, note: t.f6_note, accent: false },
   ];
 
   return (
@@ -48,7 +48,7 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
           {facilities.map((f) => (
             <div
               key={f.title}
-              className={`p-10 group hover:shadow-lg transition-shadow ${
+              className={`relative p-10 group hover:shadow-lg transition-shadow ${
                 f.accent ? "bg-[#1a1a1a]" : "bg-white"
               }`}
             >
@@ -66,6 +66,11 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
               <p className={`text-sm leading-relaxed ${f.accent ? "text-gray-400" : "text-gray-500"}`}>
                 {f.desc}
               </p>
+              {f.note && (
+                <span className="absolute bottom-4 right-6 text-xs text-yellow-500">
+                  {f.note}
+                </span>
+              )}
             </div>
           ))}
         </div>

@@ -31,6 +31,7 @@ export default function ContactForm({
   const [submitted, setSubmitted] = useState(false);
   const [roomType, setRoomType] = useState<"standard" | "deluxe">("standard");
   const [roomOpen, setRoomOpen] = useState(false);
+  const [guests, setGuests] = useState("");
   const roomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -104,10 +105,11 @@ export default function ContactForm({
             {t.guests}
           </label>
           <input
-            type="number"
-            min="1"
-            max="10"
-            defaultValue="2"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            value={guests}
+            onChange={(e) => setGuests(e.target.value.replace(/[^0-9]/g, ""))}
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
         </div>
