@@ -16,7 +16,7 @@ export default async function RoomsPage({ params }: PageProps<"/[lang]/rooms">) 
       price: "89",
       currency: "€",
       size: "25m²",
-      beds: "1 Queen",
+      beds: "2 Single",
       gradient: "from-stone-200 to-stone-300",
     },
     {
