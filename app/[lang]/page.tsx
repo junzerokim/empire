@@ -65,16 +65,16 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
             {t.hero_desc}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid grid-cols-1 sm:inline-grid sm:grid-cols-2 gap-4">
             <Link
               href={`/${lang}/contact`}
-              className="px-10 py-4 bg-[#c9a84c] text-[#1a1a1a] text-sm tracking-widest uppercase font-semibold hover:bg-[#e8c97a] transition-colors"
+              className="px-10 py-4 bg-[#c9a84c] text-[#1a1a1a] text-sm tracking-widest uppercase font-semibold hover:bg-[#e8c97a] transition-colors text-center"
             >
               {t.book_now}
             </Link>
             <Link
               href={`/${lang}/rooms`}
-              className="px-10 py-4 border border-[#c9a84c] text-[#c9a84c] text-sm tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#1a1a1a] transition-colors"
+              className="px-10 py-4 border border-[#c9a84c] text-[#c9a84c] text-sm tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#1a1a1a] transition-colors text-center"
             >
               {t.explore_rooms}
             </Link>
