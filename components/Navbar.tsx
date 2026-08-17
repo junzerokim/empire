@@ -22,9 +22,9 @@ export default function Navbar({ dict, lang }: { dict: NavDict; lang: string }) 
     { href: `/${lang}/contact`, label: dict.contact },
   ];
 
-  const langLabels: Record<string, string> = { en: "English", ko: "한국어", cs: "Čeština" };
-  const langFlags: Record<string, string> = { en: "🇬🇧", ko: "🇰🇷", cs: "🇨🇿" };
-  const otherLangs = ["en", "ko", "cs"].filter((l) => l !== lang);
+  const langLabels: Record<string, string> = { en: "English", ko: "한국어", cz: "Čeština" };
+  const langFlags: Record<string, string> = { en: "🇬🇧", ko: "🇰🇷", cz: "🇨🇿" };
+  const otherLangs = ["en", "ko", "cz"].filter((l) => l !== lang);
 
   const toOtherLang = (targetLang: string) => {
     const segments = pathname.split("/");

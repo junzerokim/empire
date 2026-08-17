@@ -5,7 +5,7 @@ import { getDictionary, hasLocale } from "./dictionaries";
 import "../../app/globals.css";
 
 export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "ko" }, { lang: "cs" }];
+  return [{ lang: "en" }, { lang: "ko" }, { lang: "cz" }];
 }
 
 export default async function LangLayout({
