@@ -44,7 +44,7 @@
   },
   "facilities": {
     "title": "Vybavení",
-    "subtitle": "Vše, co potřebujete pro dokonalý pobyt, pod jednou střechou.",
+    "subtitle": "Vše, co potřebujete pro svůj pobyt, pod jednou střechou.",
     "f1_title": "Restaurace",
     "f1_desc": "Snídaně a večeře jsou servírovány jako korejská kuchyně.",
     "f2_title": "Fitness centrum",
@@ -84,7 +84,8 @@
     "kakao_val": "hotelempire",
     "hours": "Hodiny recepce",
     "hours_val": "24 hodin / 7 dní v týdnu",
-    "success": "Děkujeme! Váš dotaz byl odeslán. Brzy se vám ozveme."
+    "success": "Děkujeme! Váš dotaz byl odeslán. Brzy se vám ozveme.",
+    "error": "Odeslání dotazu se nezdařilo. Zkuste to prosím znovu."
   },
   "footer": {
     "tagline": "Luxus v srdci České republiky",

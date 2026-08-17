@@ -44,7 +44,7 @@
   },
   "facilities": {
     "title": "Facilities",
-    "subtitle": "Everything you need for a perfect stay, all under one roof.",
+    "subtitle": "Everything you need for your stay, all under one roof.",
     "f1_title": "Restaurant",
     "f1_desc": "Breakfast and dinner are served as Korean cuisine.",
     "f2_title": "Fitness Center",
@@ -84,7 +84,8 @@
     "kakao_val": "hotelempire",
     "hours": "Reception Hours",
     "hours_val": "24 hours / 7 days a week",
-    "success": "Thank you! Your inquiry has been sent. We will contact you shortly."
+    "success": "Thank you! Your inquiry has been sent. We will contact you shortly.",
+    "error": "Something went wrong sending your inquiry. Please try again shortly."
   },
   "footer": {
     "tagline": "Luxury in the Heart of Czech Republic",

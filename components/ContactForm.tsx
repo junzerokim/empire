@@ -14,6 +14,7 @@ type ContactDict = {
   message_placeholder: string;
   submit: string;
   success: string;
+  error: string;
 };
 
 type RoomsDict = {
@@ -29,6 +30,8 @@ export default function ContactForm({
   rooms: RoomsDict;
 }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   const [roomType, setRoomType] = useState<"standard" | "deluxe">("standard");
   const [roomOpen, setRoomOpen] = useState(false);
   const [guests, setGuests] = useState("");
@@ -44,9 +47,26 @@ export default function ContactForm({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(false);
+
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("request failed");
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const roomOptions = [
@@ -77,6 +97,7 @@ export default function ContactForm({
           </label>
           <input
             type="text"
+            name="name"
             required
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
@@ -87,6 +108,7 @@ export default function ContactForm({
           </label>
           <input
             type="email"
+            name="email"
             required
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
@@ -97,6 +119,7 @@ export default function ContactForm({
           </label>
           <input
             type="tel"
+            name="phone"
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
         </div>
@@ -106,6 +129,7 @@ export default function ContactForm({
           </label>
           <input
             type="text"
+            name="guests"
             inputMode="numeric"
             pattern="[0-9]*"
             value={guests}
@@ -119,6 +143,7 @@ export default function ContactForm({
           </label>
           <input
             type="date"
+            name="checkin"
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
         </div>
@@ -128,6 +153,7 @@ export default function ContactForm({
           </label>
           <input
             type="date"
+            name="checkout"
             className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent"
           />
         </div>
@@ -176,14 +202,18 @@ export default function ContactForm({
         </label>
         <textarea
           rows={4}
+          name="message"
           placeholder={t.message_placeholder}
           className="w-full border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-[#c9a84c] transition-colors bg-transparent resize-none placeholder:text-gray-300"
         />
       </div>
 
+      {error && <p className="text-red-600 text-sm">{t.error}</p>}
+
       <button
         type="submit"
-        className="w-full py-4 bg-[#1a1a1a] text-[#c9a84c] text-sm tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#1a1a1a] transition-colors"
+        disabled={submitting}
+        className="w-full py-4 bg-[#1a1a1a] text-[#c9a84c] text-sm tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#1a1a1a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {t.submit}
       </button>
