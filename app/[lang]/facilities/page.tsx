@@ -9,12 +9,12 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
   const t = dict.facilities;
 
   const facilities = [
-    { icon: "🍽️", title: t.f1_title, desc: t.f1_desc, accent: true },
-    { icon: "💪🏻", title: t.f2_title, desc: t.f2_desc, note: t.f2_note, accent: false },
-    { icon: "🚙", title: t.f3_title, desc: t.f3_desc, note: t.f3_note, accent: true },
-    { icon: "🎤", title: t.f4_title, desc: t.f4_desc, accent: false },
-    { icon: "🅿️", title: t.f5_title, desc: t.f5_desc, accent: true },
-    { icon: "🧺", title: t.f6_title, desc: t.f6_desc, note: t.f6_note, accent: false },
+    { icon: "🍽️", title: t.f1_title, desc: t.f1_desc },
+    { icon: "🧺", title: t.f6_title, desc: t.f6_desc, note: t.f6_note },
+    { icon: "🅿️", title: t.f5_title, desc: t.f5_desc },
+    { icon: "🚙", title: t.f3_title, desc: t.f3_desc, note: t.f3_note },
+    { icon: "💪🏻", title: t.f2_title, desc: t.f2_desc, note: t.f2_note },
+    { icon: "🎤", title: t.f4_title, desc: t.f4_desc },
   ];
 
   return (
@@ -43,18 +43,16 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
       </section>
 
       {/* Facilities Grid */}
-      <section className="py-20 px-4 bg-[#f8f4ee]">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {facilities.map((f) => (
             <div
               key={f.title}
-              className={`relative p-10 group hover:shadow-lg transition-shadow ${
-                f.accent ? "bg-[#1a1a1a]" : "bg-white"
-              }`}
+              className="relative p-10 bg-white border border-gray-100 hover:border-[#c9a84c] transition-colors group"
             >
               <div className="text-5xl mb-6">{f.icon}</div>
               <h2
-                className={`mb-4 ${f.accent ? "text-[#c9a84c]" : "text-[#1a1a1a] group-hover:text-[#c9a84c]"} transition-colors`}
+                className="mb-4 text-[#1a1a1a] group-hover:text-[#c9a84c] transition-colors"
                 style={{
                   fontFamily: "'Noto Serif KR', serif",
                   fontSize: "1.5rem",
@@ -63,11 +61,11 @@ export default async function FacilitiesPage({ params }: PageProps<"/[lang]/faci
               >
                 {f.title}
               </h2>
-              <p className={`text-sm leading-relaxed ${f.accent ? "text-gray-400" : "text-gray-500"}`}>
+              <p className="text-sm leading-relaxed text-gray-500">
                 {f.desc}
               </p>
               {f.note && (
-                <span className="absolute bottom-4 right-6 text-xs text-yellow-500">
+                <span className="absolute bottom-4 right-6 text-xs text-[#c9a84c]">
                   {f.note}
                 </span>
               )}
